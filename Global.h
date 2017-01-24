@@ -9,4 +9,5 @@
 namespace Global {
 	Setting setting;
 	std::ostream* errlog = &std::cerr;
+	std::ostream* debug = &std::cout;
 }

@@ -13,7 +13,7 @@ rm -f ^a
 
 if [ -z $S ]; then
 	rm -f .valgrind.log
-	valgrind --leak-check=full --error-exitcode=222 --log-file='.valgrind.log' `cat _exec.sh` | tee ^a
+	valgrind --leak-check=full --error-exitcode=222 --log-file='.valgrind.log' ./a.out `cat arg` | tee ^a
 	[ `grep "ERROR SUMMARY: 0 errors" .valgrind.log | wc -l` -ne 1 ] \
 		&& echo -n -e '\e[38;5;202m --- valgrind error --- \e[m' \
 		&& read \

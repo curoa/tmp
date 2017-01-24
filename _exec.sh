@@ -1,1 +1,1 @@
-./a.out 1 123234
+./a.out `cat arg`
