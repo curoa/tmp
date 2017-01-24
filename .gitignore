@@ -1,0 +1,13 @@
+a.out
+*.o
+
+log
+*.swp
+
+^*
+.depend/
+.valgrind.log
+
+template.aux
+template.log
+template.aux
