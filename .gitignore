@@ -8,6 +8,4 @@ log
 .depend/
 .valgrind.log
 
-template.aux
-template.log
-template.aux
+arg
