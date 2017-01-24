@@ -12,7 +12,6 @@ const int ARGC_NORMAL = 2 + 1;
 const int ARGC_EMPTY_STR = ARGC_NORMAL - 1;
 
 int main(int argc, char** argv) {
-	//ostream* errlog = new ofstream("/dev/null");
 	std::cout << "debug argc " << argc << std::endl; // debug
 	if (not (argc == ARGC_NORMAL or argc == ARGC_EMPTY_STR)) {
 		*errlog
@@ -31,7 +30,7 @@ int main(int argc, char** argv) {
 	ConditionallySubStringFinder finder;
 	auto vec = finder.find(str, setting.challange_number);
 	for (auto val : vec) {
-		std::cout << "debug v " << val << std::endl; // debug
+		std::cout << "debug ans " << val << std::endl; // debug
 	}
 
 	std::cout << "\e[38;5;0m\e[48;5;40m --- end ---  \e[m" << std::endl; // debug
