@@ -6,7 +6,6 @@
 using std::string;
 using std::cout;
 using std::endl;
-using namespace Global;
 
 const int ARGC_NORMAL = 2 + 1;
 const int ARGC_EMPTY_STR = ARGC_NORMAL - 1;

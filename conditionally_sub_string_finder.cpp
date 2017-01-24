@@ -2,16 +2,7 @@
 #define CLASS ConditionallySubStringFinder
 
 #include <iostream>
-
-bool check(string str, size_t pos) {
-	if (pos + 1 >= str.size()) {
-		return true;
-	}
-	if (str[pos] < str[pos + 1]) {
-		return true;
-	}
-	return false;
-}
+#include "ConditionCheckerFactory.h"
 
 /**
  * 開始位置の集合を部分文字列の集合に変換する
@@ -31,14 +22,14 @@ vector<string> CLASS::convertPosSetToSubStringSet(string str, vector<size_t> sta
  * @param string str 対象にする文字列
  * @param int type 条件のタイプ
  */
-vector<string> CLASS::find(string str, int /* type */) {
-	// TODO use type
+vector<string> CLASS::find(string str, int type) {
+	ConditionChecker* checker = ConditionCheckerFactory::make(type);
 	vector<size_t> start_pos_set;
 	size_t max_length = 0;
 	size_t length = 1;
 	size_t start_pos = 0;
 	for (size_t pos = 0; pos < str.size(); pos++) {
-		if (check(str, pos)) {
+		if (checker->check(str, pos)) {
 			std::cout << "debug pos " << pos << std::endl; // debug
 			length++;
 			if (max_length == length) {
@@ -54,6 +45,7 @@ vector<string> CLASS::find(string str, int /* type */) {
 		}
 	}
 	std::cout << "debug ml " << max_length << std::endl; // debug
+	delete checker;
 	return convertPosSetToSubStringSet(str, start_pos_set, max_length);
 }
 
