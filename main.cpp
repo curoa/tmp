@@ -3,10 +3,9 @@
 #include "Global.h"
 #include "ConditionallySubStringFinder.h"
 
-// TODO comment
 // TODO test
-// TODO bun in type 2, 3
 // TODO validate exception
+// TODO validation 位置おかしい 何回も確認してる 今の位置はassert 入れる
 
 using std::string;
 using std::cout;

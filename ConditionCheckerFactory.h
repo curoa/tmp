@@ -5,6 +5,10 @@
 #include "BinaryConditionChecker.h"
 #include "AlphabetConditionChecker.h"
 
+/**
+ * ConditionChecker を継承するクラスのインスタンスを返すクラス
+ *
+ */
 class ConditionCheckerFactory {
 	public:
 
@@ -12,6 +16,12 @@ class ConditionCheckerFactory {
 		static const int BINARY = 2;
 		static const int ALPHABET = 3;
 
+		/**
+		 * ConditionChecker を継承するクラスのインスタンスを返す
+		 *
+		 * @param int type どのクラスのインスタンスを返すかしていする。
+		 * @return ConditionChecker* ConditionChecker を継承するクラスのポインタ
+		 */
 		static ConditionChecker* make(int type) {
 			switch (type) {
 				case NUM:
