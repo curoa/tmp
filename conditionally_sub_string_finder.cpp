@@ -29,19 +29,24 @@ vector<string> CLASS::find(string str, int type) {
 	size_t length = 1;
 	size_t start_pos = 0;
 	for (size_t pos = 0; pos < str.size(); pos++) {
-		if (checker->check(str, pos)) {
-			std::cout << "debug pos " << pos << std::endl; // debug
-			length++;
-			if (max_length == length) {
-				start_pos_set.push_back(start_pos);
-			} else if (max_length < length) {
-				start_pos_set.clear();
-				max_length = length;
-				start_pos_set.push_back(start_pos);
-			}
-		} else {
-			length = 1;
-			start_pos = pos + 1;
+		switch (checker->check(str, pos)) {
+			case checker->TRUE:
+				std::cout << "debug pos " << pos << std::endl; // debug
+				length++;
+				if (max_length == length) {
+					start_pos_set.push_back(start_pos);
+				} else if (max_length < length) {
+					start_pos_set.clear();
+					max_length = length;
+					start_pos_set.push_back(start_pos);
+				}
+				break;
+			case checker->FALSE:
+				length = 1;
+				start_pos = pos + 1;
+				break;
+			case checker->SKIP:
+				break;
 		}
 	}
 	std::cout << "debug ml " << max_length << std::endl; // debug

@@ -6,6 +6,7 @@
 // TODO comment
 // TODO test
 // TODO bun in type 2, 3
+// TODO validate exception
 
 using std::string;
 using std::cout;

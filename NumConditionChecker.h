@@ -5,14 +5,14 @@
 
 class NumConditionChecker : public ConditionChecker {
 	public:
-		bool check(string str, size_t pos) {
+		int check(string str, size_t pos) {
 			Validator::isNumStr(str);
 			if (pos + 1 >= str.size()) {
-				return true;
+				return SKIP;
 			}
 			if (str[pos] < str[pos + 1]) {
-				return true;
+				return TRUE;
 			}
-			return false;
+			return FALSE;
 		}
 };
