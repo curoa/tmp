@@ -22,6 +22,14 @@ class ConditionChecker {
 		virtual int check(string str, size_t pos) = 0;
 
 		/**
+		 * 入力文字列が正しいか調べる
+		 *
+		 * @param string str 調べる文字列
+		 * @return bool 入力文字列が正しいときに true, そうでないとき false
+		 */
+		virtual bool validate(string str) = 0;
+
+		/**
 		 * 抽象デストラクタ
 		 *
 		 */

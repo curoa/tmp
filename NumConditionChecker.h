@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cassert>
 #include "ConditionChecker.h"
 #include "Validator.h"
 
@@ -19,7 +20,7 @@ class NumConditionChecker : public ConditionChecker {
 		 * @return int クラス定数のいずれかを返す
 		 */
 		int check(string str, size_t pos) {
-			Validator::isNumStr(str);
+			assert(validate(str));
 			if (pos + 1 >= str.size()) {
 				return SKIP;
 			}
@@ -27,5 +28,9 @@ class NumConditionChecker : public ConditionChecker {
 				return TRUE;
 			}
 			return FALSE;
+		}
+
+		bool validate(string str) {
+			return Validator::isNumStr(str);
 		}
 };

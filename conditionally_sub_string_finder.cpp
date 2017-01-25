@@ -24,6 +24,11 @@ vector<string> CLASS::convertPosSetToSubStringSet(string str, vector<size_t> sta
  */
 vector<string> CLASS::find(string str, int type) {
 	ConditionChecker* checker = ConditionCheckerFactory::make(type);
+	if (not checker->validate(str)) {
+		*errlog << "type " << type << " : invalid string " << str << endl;
+		// TODO exception
+		exit(1);
+	}
 	vector<size_t> start_pos_set;
 	size_t max_length = 0;
 	size_t length = 1;
