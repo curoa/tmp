@@ -3,6 +3,10 @@
 #include "Global.h"
 #include "ConditionallySubStringFinder.h"
 
+// TODO comment
+// TODO test
+// TODO bun in type 2, 3
+
 using std::string;
 using std::cout;
 using std::endl;
