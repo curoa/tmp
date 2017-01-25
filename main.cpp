@@ -1,11 +1,8 @@
 #include <iostream>
 #include <string>
+#include <stdexcept>
 #include "Global.h"
 #include "ConditionallySubStringFinder.h"
-
-// TODO test
-// TODO validate exception
-// TODO validation 位置おかしい 何回も確認してる 今の位置はassert 入れる
 
 using std::string;
 using std::cout;
@@ -15,7 +12,7 @@ const int ARGC_NORMAL = 2 + 1;
 const int ARGC_EMPTY_STR = ARGC_NORMAL - 1;
 
 int main(int argc, char** argv) {
-	std::cout << "debug argc " << argc << std::endl; // debug
+	*debug << "debug argc " << argc << std::endl; // debug
 	if (not (argc == ARGC_NORMAL or argc == ARGC_EMPTY_STR)) {
 		*errlog
 			<< "invalid argument" << endl
@@ -30,12 +27,16 @@ int main(int argc, char** argv) {
 	*debug << "debug " << setting.challange_number  << std::endl; // debug
 	*debug << "debug str " << str << std::endl; // debug
 
-	ConditionallySubStringFinder finder;
-	auto vec = finder.find(str, setting.challange_number);
-	for (auto val : vec) {
-		std::cout << "debug ans " << val << std::endl; // debug
+	try {
+		ConditionallySubStringFinder finder;
+		auto sub_str_set = finder.find(str, setting.challange_number);
+		for (auto str : sub_str_set) {
+			std::cout << str << std::endl; // debug
+		}
+	} catch (std::exception& err) {
+		*errlog << err.what() << endl;
 	}
 
-	std::cout << "\e[38;5;0m\e[48;5;40m --- end ---  \e[m" << std::endl; // debug
+	*debug << "\e[38;5;0m\e[48;5;40m --- end ---  \e[m" << std::endl; // debug
 	return 0;
 }

@@ -1,7 +1,7 @@
 #include "Validator.h"
 #define CLASS Validator
 
-bool CLASS::isAlphabetStr(string str) {
+bool CLASS::isAlphabetStr(const string& str) {
 	for (auto c : str) {
 		if (not std::isalpha(c)) {
 			return false;
@@ -10,7 +10,7 @@ bool CLASS::isAlphabetStr(string str) {
 	return true;
 }
 
-bool CLASS::isNumStr(string str) {
+bool CLASS::isNumStr(const string& str) {
 	for (auto c : str) {
 		if (not std::isdigit(c)) {
 			return false;
@@ -19,7 +19,7 @@ bool CLASS::isNumStr(string str) {
 	return true;
 }
 
-bool CLASS::isBinaryStr(string str) {
+bool CLASS::isBinaryStr(const string& str) {
 	for (auto c : str) {
 		if (not (c == '0' or c == '1')) {
 			return false;

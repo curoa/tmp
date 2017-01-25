@@ -6,7 +6,7 @@ using std::string;
 
 class Validator {
 	public:
-		static bool isAlphabetStr(string str);
-		static bool isNumStr(string str);
-		static bool isBinaryStr(string str);
+		static bool isAlphabetStr(const string& str);
+		static bool isNumStr(const string& str);
+		static bool isBinaryStr(const string& str);
 };

@@ -2,6 +2,8 @@
 #define CLASS ConditionallySubStringFinder
 
 #include <iostream>
+#include <sstream>
+#include <stdexcept>
 #include "ConditionCheckerFactory.h"
 
 /**
@@ -25,9 +27,9 @@ vector<string> CLASS::convertPosSetToSubStringSet(string str, vector<size_t> sta
 vector<string> CLASS::find(string str, int type) {
 	ConditionChecker* checker = ConditionCheckerFactory::make(type);
 	if (not checker->validate(str)) {
-		*errlog << "type " << type << " : invalid string " << str << endl;
-		// TODO exception
-		exit(1);
+		std::stringstream ss;
+		ss << "type " << type << " : invalid string " << str << endl;
+		throw std::runtime_error(ss.str());
 	}
 	vector<size_t> start_pos_set;
 	size_t max_length = 0;
@@ -36,7 +38,7 @@ vector<string> CLASS::find(string str, int type) {
 	for (size_t pos = 0; pos < str.size(); pos++) {
 		switch (checker->check(str, pos)) {
 			case checker->TRUE:
-				std::cout << "debug pos " << pos << std::endl; // debug
+				*debug << "debug pos " << pos << std::endl; // debug
 				length++;
 				if (max_length == length) {
 					start_pos_set.push_back(start_pos);
@@ -54,7 +56,7 @@ vector<string> CLASS::find(string str, int type) {
 				break;
 		}
 	}
-	std::cout << "debug ml " << max_length << std::endl; // debug
+	*debug << "debug ml " << max_length << std::endl; // debug
 	delete checker;
 	return convertPosSetToSubStringSet(str, start_pos_set, max_length);
 }

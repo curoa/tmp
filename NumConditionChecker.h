@@ -19,7 +19,7 @@ class NumConditionChecker : public ConditionChecker {
 		 * @param string pos 調べる位置
 		 * @return int クラス定数のいずれかを返す
 		 */
-		int check(string str, size_t pos) {
+		int check(const string& str, size_t pos) {
 			assert(validate(str));
 			if (pos + 1 >= str.size()) {
 				return SKIP;
@@ -30,7 +30,7 @@ class NumConditionChecker : public ConditionChecker {
 			return FALSE;
 		}
 
-		bool validate(string str) {
+		bool validate(const string& str) {
 			return Validator::isNumStr(str);
 		}
 };

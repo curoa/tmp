@@ -19,7 +19,7 @@ class ConditionChecker {
 		 * @param string pos 調べる位置
 		 * @return int クラス定数のいずれかを返す
 		 */
-		virtual int check(string str, size_t pos) = 0;
+		virtual int check(const string& str, size_t pos) = 0;
 
 		/**
 		 * 入力文字列が正しいか調べる
@@ -27,7 +27,7 @@ class ConditionChecker {
 		 * @param string str 調べる文字列
 		 * @return bool 入力文字列が正しいときに true, そうでないとき false
 		 */
-		virtual bool validate(string str) = 0;
+		virtual bool validate(const string& str) = 0;
 
 		/**
 		 * 抽象デストラクタ
